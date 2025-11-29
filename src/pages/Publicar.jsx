@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BACKEND_URL } from "./config";
+import { BACKEND_URL } from "../config";
 
 export default function Publicar() {
   const [title, setTitle] = useState("");

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BACKEND_URL } from "./config";
+import { BACKEND_URL } from "../config";
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
