@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BACKEND_URL } from "./config";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -13,10 +14,10 @@ export default function Register() {
     setSuccess("");
 
     try {
-      const res = await fetch("https://mercadojg-backend.vercel.app/api/users/register", {
+      const res = await fetch(`${BACKEND_URL}/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name, email, password }),
       });
 
       const data = await res.json();
@@ -27,7 +28,7 @@ export default function Register() {
       }
 
       setSuccess("Registro exitoso. Ahora inicia sesión.");
-    } catch (err) {
+    } catch {
       setError("Error de conexión");
     }
   };

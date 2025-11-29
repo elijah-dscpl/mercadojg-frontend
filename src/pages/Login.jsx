@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BACKEND_URL } from "./config";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,10 +11,10 @@ export default function Login() {
     setError("");
 
     try {
-      const res = await fetch("https://mercadojg-backend.vercel.app/api/users/login", {
+      const res = await fetch(`${BACKEND_URL}/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
@@ -25,7 +26,7 @@ export default function Login() {
 
       alert("Login exitoso");
       console.log("TOKEN:", data.token);
-    } catch (err) {
+    } catch {
       setError("Error de conexión");
     }
   };
